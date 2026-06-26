@@ -4,75 +4,33 @@
 A Modern Smart Calculator built with HTML, CSS & JavaScript
 </p>
 
-<p align="center">
-
-<a href="YOUR-LIVE-DEMO-LINK">
-<img src="https://img.shields.io/badge/🚀_Live_Demo-Open_Calculator-00C853?style=for-the-badge">
-</a>
-
-<a href="https://github.com/janani2246/calculator_janani">
-<img src="https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github">
-</a>
-
-</p>
-
 ---
 
 # 📖 About
 
-NeoCalc Pro is a stylish and feature-rich calculator developed using **HTML, CSS, and JavaScript**. It provides a modern user experience with a beautiful glassmorphism interface, responsive layout, real-time calculation preview, keyboard support, and persistent calculation history.
+**NeoCalc Pro** is a modern and responsive calculator web application developed using **HTML, CSS, and JavaScript**. It is designed with a sleek glassmorphism interface and provides a smooth user experience for performing everyday calculations.
 
-The application is designed to deliver fast, accurate calculations while maintaining an elegant and interactive user interface suitable for desktops, tablets, and mobile devices.
-
----
-
-# 🚀 Live Demo
-
-Click below to explore the calculator.
-
-<p align="center">
-
-<a href="YOUR-LIVE-DEMO-LINK">
-
-<img src="https://img.shields.io/badge/🌐_LIVE_DEMO-Launch_Calculator-success?style=for-the-badge">
-
-</a>
-
-</p>
+The calculator offers real-time calculation previews, keyboard support, calculation history using Local Storage, theme switching, and copy-to-clipboard functionality. The project demonstrates clean UI design, responsive layouts, and JavaScript DOM manipulation, making it an excellent showcase of frontend development skills.
 
 ---
 
 # ✨ Features
 
-✅ Responsive Design
-
-✅ Modern Glassmorphism UI
-
-✅ Live Result Preview
-
-✅ Basic Arithmetic Operations
-
-✅ Percentage Calculation
-
-✅ Copy Result to Clipboard
-
-✅ Dark / Light Theme Toggle
-
-✅ Keyboard Shortcuts
-
-✅ Calculation History
-
-✅ Local Storage Support
-
-✅ Clear History Option
-
-✅ Backspace Functionality
-
-✅ Smooth Animations
-
-✅ Mobile Friendly
-
-✅ Professional User Interface
+- ✅ Responsive Design
+- ✅ Modern Glassmorphism UI
+- ✅ Real-Time Result Preview
+- ✅ Basic Arithmetic Operations
+- ✅ Percentage Calculation
+- ✅ Copy Result to Clipboard
+- ✅ Dark & Light Theme Toggle
+- ✅ Keyboard Shortcuts
+- ✅ Calculation History
+- ✅ Local Storage Support
+- ✅ Clear History
+- ✅ Backspace Functionality
+- ✅ Smooth Animations
+- ✅ Mobile-Friendly Layout
+- ✅ Clean & Interactive User Interface
 
 ---
 
@@ -88,34 +46,34 @@ Click below to explore the calculator.
 
 # 📂 Functionalities
 
-### Calculator
+### Calculator Operations
 
-- Addition
-- Subtraction
-- Multiplication
-- Division
-- Percentage
+- Addition (+)
+- Subtraction (-)
+- Multiplication (×)
+- Division (÷)
+- Percentage (%)
 
 ### Smart Features
 
 - Live Expression Preview
 - Instant Result Calculation
-- Copy Result
-- Keyboard Input
-- History Storage
+- Copy Results
+- Keyboard Input Support
+- Save Calculation History
 - Theme Switching
 
 ---
 
-# 📸 User Interface
+# 💻 User Interface
 
-The calculator includes:
+The application includes:
 
-- Professional Dashboard
-- Animated Glassmorphism Design
-- Responsive Button Layout
+- Professional Glassmorphism Design
+- Responsive Calculator Layout
+- Interactive Button Animations
 - Smart Display Screen
-- History Sidebar
+- History Panel
 - Dark & Light Themes
 
 ---
@@ -124,113 +82,105 @@ The calculator includes:
 
 | Key | Action |
 |------|--------|
-| 0-9 | Numbers |
+| 0–9 | Enter Numbers |
 | + - * / | Operators |
-| Enter | Calculate |
-| Backspace | Delete |
-| Esc | Clear |
+| Enter | Calculate Result |
+| Backspace | Delete Last Character |
+| Esc | Clear Screen |
 
 ---
 
-# 📁 Folder Structure
+# 📁 Project Structure
 
 ```
-Calculator/
+calculator_janani/
 │
 ├── index.html
 ├── style.css
 ├── script.js
-├── assets/
 └── README.md
 ```
 
 ---
 
-# 💻 Installation
+# 🚀 Getting Started
 
-Clone the repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/janani2246/calculator_janani.git
 ```
 
-Move into the project
+### Navigate to the Project Folder
 
 ```bash
 cd calculator_janani
 ```
 
-Open the project
+### Run the Project
 
-```bash
-Open index.html in your browser
-```
+Simply open the `index.html` file in your preferred web browser.
 
-No additional dependencies are required.
+No additional installations or dependencies are required.
 
 ---
 
-# 🌟 Highlights
+# 🌟 Project Highlights
 
-- Modern UI Design
+- Modern UI/UX Design
 - Glassmorphism Effects
-- Smooth Animations
-- Responsive Layout
+- Fully Responsive Layout
 - Interactive User Experience
-- Lightweight Project
-- Beginner Friendly
-- Clean Code Structure
+- Lightweight and Fast
+- Beginner-Friendly Code Structure
+- Clean and Organized Source Code
 
 ---
 
 # 🔮 Future Enhancements
 
-- Scientific Calculator
-- Calculation Memory
-- Multiple Themes
-- Voice Input
-- Currency Converter
+- Scientific Calculator Functions
+- Memory Operations (M+, M-, MR)
+- Multiple Color Themes
 - Unit Converter
-- Calculation Export
-- History Search
+- Currency Converter
+- Export Calculation History
+- Voice Input Support
 
 ---
 
 # 👩‍💻 Author
 
-**Janani M**
+## Janani M
 
-Frontend Developer
+**Frontend Developer**
 
-Passionate about creating responsive and interactive web applications using modern web technologies.
+Passionate about creating responsive, interactive, and user-friendly web applications using modern frontend technologies.
 
 ---
 
-# 📬 Connect With Me
+# 📬 Connect
 
-### GitHub
-
+**GitHub:**  
 https://github.com/janani2246
 
 ---
 
 # ⭐ Support
 
-If you found this project useful,
+If you found this project helpful:
 
-⭐ Star this repository
+- ⭐ Star this repository
+- 🍴 Fork this project
+- 💡 Share your feedback
 
-🍴 Fork it
-
-💬 Share it with others
-
-Your support motivates me to build more exciting projects.
+Your support encourages me to build more exciting projects and continue learning.
 
 ---
 
 # 📄 License
 
-This project is open-source and intended for learning and educational purposes.
+This project is open-source and intended for learning, practice, and educational purposes.
 
 ---
 
