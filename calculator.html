@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoCalc Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.calculator{
+    width:380px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,.1);
+    animation:rgbGlow 4s infinite alternate;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.header h2{
+    color:white;
+}
+
+.subtitle{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+#themeToggle{
+    border:none;
+    padding:10px 12px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.display{
+    background:rgba(255,255,255,.08);
+    border-radius:15px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+#expression{
+    color:#94a3b8;
+    min-height:20px;
+    word-break:break-all;
+}
+
+#screen{
+    width:100%;
+    border:none;
+    background:none;
+    color:white;
+    outline:none;
+    text-align:right;
+    font-size:2rem;
+}
+
+#liveResult{
+    text-align:right;
+    margin-top:10px;
+    color:#00ff88;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.actions button{
+    flex:1;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.buttons button{
+    height:65px;
+    border:none;
+    border-radius:15px;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.buttons button:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.buttons button:active{
+    transform:scale(.95);
+}
+
+.operator{
+    background:#00e5ff;
+}
+
+.equal{
+    background:#00ff88;
+}
+
+.special{
+    background:#ff4d6d;
+    color:white;
+}
+
+.zero{
+    grid-column:span 2;
+}
+
+.history-panel{
+
+    width:280px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    color:white;
+
+    display:none;
+
+    animation:slideHistory .4s ease;
+}
+
+.history-panel.show{
+    display:block;
+}
+
+.history-panel h3{
+    margin-bottom:15px;
+}
+
+.history-panel ul{
+    list-style:none;
+}
+
+.history-panel li{
+
+    background:rgba(255,255,255,.08);
+
+    padding:10px;
+
+    margin-bottom:10px;
+
+    border-radius:10px;
+}
+
+#clearHistoryBtn{
+
+    width:100%;
+
+    padding:10px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#ff4d6d;
+
+    color:white;
+
+    font-weight:600;
+}
+
+.light-mode{
+    background:#f8fafc;
+}
+
+.light-mode .calculator,
+.light-mode .history-panel{
+    background:white;
+    color:black;
+}
+
+.light-mode #screen{
+    color:black;
+}
+
+.light-mode h2{
+    color:black;
+}
+
+@keyframes rgbGlow{
+    0%{
+        box-shadow:0 0 15px cyan;
+    }
+    50%{
+        box-shadow:0 0 25px magenta;
+    }
+    100%{
+        box-shadow:0 0 15px cyan;
+    }
+}
+
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .calculator,
+    .history-panel{
+        width:100%;
+        max-width:380px;
+    }
+}
+@keyframes slideHistory{
+
+    from{
+        opacity:0;
+        transform:translateX(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="calculator">
+
+<div class="header">
+<div>
+<h2>⚡ NeoCalc Pro</h2>
+<div class="subtitle">
+Professional Smart Calculator
+</div>
+</div>
+
+<button id="themeToggle">🌙</button>
+</div>
+
+<div class="display">
+<div id="expression"></div>
+
+<input type="text" id="screen" readonly>
+
+<div id="liveResult">
+Result: 0
+</div>
+</div>
+
+<div class="actions">
+<button id="copyBtn">📋 Copy</button>
+<button id="historyToggle">
+📜 History
+</button>
+</div>
+
+<div class="buttons">
+
+<button class="special">C</button>
+<button class="special">⌫</button>
+<button class="operator">%</button>
+<button class="operator">/</button>
+
+<button>7</button>
+<button>8</button>
+<button>9</button>
+<button class="operator">*</button>
+
+<button>4</button>
+<button>5</button>
+<button>6</button>
+<button class="operator">-</button>
+
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button class="operator">+</button>
+
+<button class="zero">0</button>
+<button>.</button>
+<button class="equal">=</button>
+
+</div>
+
+</div>
+
+<div class="history-panel">
+
+<h3>📜 Recent History</h3>
+
+<button id="clearHistoryBtn">
+🗑 Clear History
+</button>
+
+<ul id="historyList"></ul>
+
+</div>
+
+</div>
+
+<script>
+
+const screen=document.getElementById("screen");
+const expression=document.getElementById("expression");
+const liveResult=document.getElementById("liveResult");
+const historyList=document.getElementById("historyList");
+const historyPanel =
+document.querySelector(".history-panel");
+
+const historyToggle =
+document.getElementById("historyToggle");
+
+let currentInput="";
+
+loadHistory();
+
+document.querySelectorAll(".buttons button")
+.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const value=btn.textContent;
+
+handleInput(value);
+
+});
+
+});
+
+function handleInput(value){
+
+if(value==="C"){
+currentInput="";
+updateDisplay();
+return;
+}
+
+if(value==="⌫"){
+currentInput=currentInput.slice(0,-1);
+updateDisplay();
+return;
+}
+
+if(value==="="){
+calculate();
+return;
+}
+
+currentInput+=value;
+updateDisplay();
+}
+
+function updateDisplay(){
+
+screen.value=currentInput;
+expression.textContent=currentInput;
+
+try{
+
+if(currentInput){
+liveResult.innerHTML=
+`Result: ${eval(currentInput)}`;
+}
+else{
+liveResult.innerHTML=
+"Result: 0";
+}
+
+}
+catch{
+liveResult.innerHTML=
+"Result: ?";
+}
+
+}
+
+function calculate(){
+
+try{
+
+const result=eval(currentInput);
+
+saveHistory(
+`${currentInput} = ${result}`
+);
+
+currentInput=result.toString();
+
+updateDisplay();
+
+}
+catch{
+
+screen.value="Error";
+
+}
+
+}
+
+function saveHistory(item){
+
+let history=
+JSON.parse(
+localStorage.getItem("calcHistory")
+)||[];
+
+history.unshift(item);
+
+history=history.slice(0,10);
+
+localStorage.setItem(
+"calcHistory",
+JSON.stringify(history)
+);
+
+loadHistory();
+
+}
+
+function loadHistory(){
+
+let history=
+JSON.parse(
+localStorage.getItem("calcHistory")
+)||[];
+
+historyList.innerHTML="";
+
+history.forEach(item=>{
+
+const li=document.createElement("li");
+
+li.textContent=item;
+
+historyList.appendChild(li);
+
+});
+
+}
+
+document
+.getElementById("clearHistoryBtn")
+.addEventListener("click",()=>{
+
+localStorage.removeItem("calcHistory");
+
+loadHistory();
+
+});
+
+document
+.getElementById("copyBtn")
+.addEventListener("click",()=>{
+
+navigator.clipboard.writeText(
+screen.value
+);
+
+alert("Result Copied!");
+
+});
+
+document
+.getElementById("themeToggle")
+.addEventListener("click",()=>{
+
+document.body.classList.toggle(
+"light-mode"
+);
+
+});
+historyToggle.addEventListener(
+"click",
+()=>{
+
+historyPanel.classList.toggle("show");
+
+if(
+historyPanel.classList.contains("show")
+){
+
+historyToggle.innerHTML =
+"❌ Close";
+}
+else{
+
+historyToggle.innerHTML =
+"📜 History";
+}
+
+});
+
+document.addEventListener(
+"keydown",
+(e)=>{
+
+if(
+"0123456789+-*/.%"
+.includes(e.key)
+){
+currentInput+=e.key;
+updateDisplay();
+}
+
+if(e.key==="Enter"){
+calculate();
+}
+
+if(e.key==="Backspace"){
+currentInput=currentInput.slice(0,-1);
+updateDisplay();
+}
+
+if(e.key==="Escape"){
+currentInput="";
+updateDisplay();
+}
+
+});
+
+</script>
+
+</body>
+</html>
